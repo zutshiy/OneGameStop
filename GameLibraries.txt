@@ -1,0 +1,5 @@
+C:\Program Files (x86)\Steam\steamapps\common
+C:\Program Files (x86)\Origin Games
+C:\Program Files (x86)\GOG Galaxy\Games
+D:\ALL GAMES\SteamLibrary\steamapps\common
+D:\ALL GAMES\Games

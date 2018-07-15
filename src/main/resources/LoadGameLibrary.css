@@ -1,0 +1,72 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root{
+	-fx-background-color : WHITE;
+	-materialBlue : #2F74DD;
+}
+
+.jfx-decorator{
+	-fx-decorator-color : #48A2D1;
+}
+
+.jfx-decorator .jfx-decorator-buttons-container {
+    -fx-background-color: -materialBlue;
+}
+
+.jfx-decorator .resize-border {
+    -fx-border-color: -materialBlue;
+    -fx-border-width: 0.0 4.0 4.0 4.0;
+}
+
+
+.jfx-rippler {
+    -jfx-rippler-fill: #7AFFF7;
+}
+
+.label-name {
+	-fx-font-family : "Nirmala UI";
+	-fx-text-fill : #235BB0;
+	-fx-font-weight : bold;
+}
+
+.label-found {
+	-fx-text-fill : #009F1B;
+}
+
+.label-notfound {
+	-fx-text-fill : #9F0000;
+}
+
+.button-raised{
+	-fx-background-color : -materialBlue;
+	-jfx-button-type: RAISED;
+	-fx-text-fill : WHITE;
+	-fx-pref-height : 30.0;
+}
+
+.button-flat{
+	-fx-background-color : -materialBlue;
+	-jfx-button-type: FLAT;
+	-fx-text-fill : WHITE;
+	-fx-pref-height : 20.0;
+}
+
+.text-field{
+	-jfx-unfocus-color : -materialBlue;
+	-jfx-focus-color : -materialBlue;
+	-jfx-label-float  : false;
+	-fx-font-size : 12.0px;
+}
+
+.jfx-dialog{
+	-fx-background-color : -materialBlue;
+}
+
+.label-dialog{
+	-fx-text-fill : WHITE;
+	-fx-font-size : 18.0px;
+}
+
+.jfx-svg-glyph{
+	-fx-background-color : -materialBlue;
+}
