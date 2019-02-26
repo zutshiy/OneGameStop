@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.game.utils.Utility;
 import com.jfoenix.animation.alert.JFXAlertAnimation;
@@ -251,15 +253,11 @@ public class LoadGameLibraries
 
     private String getPathString()
     {
-        String gameLibPathString = Utility.EMPTY_STRING;
-        for (GameLibraryFieldUI gameLibField : gameLibFields)
-        {
-            if (gameLibField.getFoundInd().equals(FOUND) && !gameLibPathString.contains(gameLibField.getPath()))
-            {
-                gameLibPathString += gameLibField.getPath() + "\n";
-            }
-        }
-        return gameLibPathString;
+        String gameLibOptional = gameLibFields.stream()
+                .filter(g -> FOUND.equals(g.getFoundInd()) && !Utility.isEmptyString(g.getPath())).map(g -> g.getPath())
+                .distinct().collect(Collectors.joining("\n"));
+
+        return gameLibOptional;
     }
 
     private void showConfirmationDialogBox(boolean writeSuccessful)
