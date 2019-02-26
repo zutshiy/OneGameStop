@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 import com.game.utils.Utility;
@@ -247,10 +248,15 @@ public class LoadGameLibraries
     private String getPathString()
     {
         String gameLibOptional = gameLibFields.stream()
-                .filter(g -> FOUND.equals(g.getFoundInd()) && !Utility.isEmptyString(g.getPath())).map(g -> g.getPath())
-                .distinct().collect(Collectors.joining("\n"));
+                .filter(g -> isValidPath(g))
+                .reduce(new StringJoiner("\n"), (s, p) -> s.add(p.getPath()), (s1, s2) -> s1.merge(s2)).toString();
 
         return gameLibOptional;
+    }
+
+    private boolean isValidPath(GameLibraryFieldUI g)
+    {
+        return FOUND.equals(g.getFoundInd()) && !Utility.isEmptyString(g.getPath());
     }
 
     private void showConfirmationDialogBox(boolean writeSuccessful)

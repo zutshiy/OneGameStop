@@ -2,12 +2,17 @@
 <classpath>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry including="**/*.java" kind="src" output="target/classes" path="src/main/java">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
@@ -17,9 +22,10 @@
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
+		<accessrules>
+			<accessrule kind="accessible" pattern="javafx/**"/>
+		</accessrules>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/kordamp/bootstrapfx/bootstrapfx-core/0.2.3/bootstrapfx-core-0.2.3.jar" sourcepath="M2_REPO/org/kordamp/bootstrapfx/bootstrapfx-core/0.2.3/bootstrapfx-core-0.2.3-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/jfoenix/jfoenix/8.0.5/jfoenix-8.0.5.jar" sourcepath="SOURCE_ATTACHER/jfoenix-8.0.5-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
