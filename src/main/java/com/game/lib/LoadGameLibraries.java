@@ -4,8 +4,8 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.game.utils.Utility;
@@ -115,34 +115,27 @@ public class LoadGameLibraries
 
     public void createPreLoadedPaths(VBox gridPane)
     {
-        List<String> preLoadedPaths = new ArrayList<String>();
-        initDefaultPaths(preLoadedPaths);
-
-        for (String path : preLoadedPaths)
-        {
-            createGameLibFieldUI(gridPane, path);
-        }
+        List<String> preLoadedPaths = initDefaultPaths();
+        preLoadedPaths.forEach(p -> createGameLibFieldUI(gridPane, p));
     }
 
-    private void initDefaultPaths(List<String> preLoadedPaths)
+    private List<String> initDefaultPaths()
     {
+        List<String> preLoadedPaths = new ArrayList<String>();
+
         File file = new File(GAME_LIBRARIES_TXT);
         String savedGameLibsString = (Utility.readFromFile(file));
 
         if (!Utility.isEmptyString(savedGameLibsString))
         {
-            List<String> savedGameLibsList = Utility.splitLinesFromString(savedGameLibsString);
-            for (String path : savedGameLibsList)
-            {
-                preLoadedPaths.add(path);
-            }
+            preLoadedPaths.addAll(Utility.splitLinesFromString(savedGameLibsString));
         }
         else
         {
-            preLoadedPaths.add(STEAM_DIRECTORY);
-            preLoadedPaths.add(ORIGIN_DIRECTORY);
-            preLoadedPaths.add(GOG_DIRECTORY);
+            preLoadedPaths.addAll(Arrays.asList(STEAM_DIRECTORY, ORIGIN_DIRECTORY, GOG_DIRECTORY));
         }
+
+        return preLoadedPaths;
     }
 
     private void createGameLibFieldUI(VBox containerBox, String preLoadedPath)
